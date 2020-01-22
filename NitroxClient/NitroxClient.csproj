@@ -118,7 +118,7 @@
     <Reference Include="UnityEngine.InputModule">
       <HintPath>$(SubnauticaManaged)\UnityEngine.InputModule.dll</HintPath>
     </Reference>
-	<Reference Include="UnityEngine.InputLegacyModule">
+    <Reference Include="UnityEngine.InputLegacyModule">
       <HintPath>$(SubnauticaManaged)\UnityEngine.InputLegacyModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
@@ -230,6 +230,7 @@
   <ItemGroup>
     <Compile Include="ClientAutoFacRegistrar.cs" />
     <Compile Include="Communication\PacketReceiver.cs" />
+    <Compile Include="Communication\Packets\Processors\PrecursorDoorwayChangedProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\RadioPlayPendingMessageProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\ExosuitArmActionProcessor.cs" />
     <Compile Include="GameLogic\InitialSync\CyclopsInitialAsyncProcessor.cs" />
@@ -258,6 +259,7 @@
     <Compile Include="GameLogic\PlayerModel\Equipment\ScubaSuitVisibiliyHandler.cs" />
     <Compile Include="GameLogic\StorageSlots.cs" />
     <Compile Include="MonoBehaviours\NitroxIdentifier.cs" />
+    <Compile Include="Precursor.cs" />
     <Compile Include="Unity\Helper\RendererHelpers.cs" />
     <Compile Include="Communication\Abstract\IClient.cs" />
     <Compile Include="Communication\Packets\Processors\CyclopsDestroyedProcessor.cs" />

@@ -334,6 +334,8 @@
     <Compile Include="Patches\Dynamic\Vehicle_OnKill_Patch.cs" />
     <Compile Include="Patches\Dynamic\Vehicle_OnPilotModeBegin_Patch.cs" />
     <Compile Include="Patches\Dynamic\Vehicle_OnPilotModeEnd_Patch.cs" />
+    <Compile Include="Patches\PrecursorDoorKeyColumn_Patch.cs" />
+    <Compile Include="Patches\PrecursorDoorway_Patch.cs" />
     <Compile Include="Patches\IDynamicPatch.cs" />
     <Compile Include="Patches\INitroxPatch.cs" />
     <Compile Include="Patches\IPersistentPatch.cs" />

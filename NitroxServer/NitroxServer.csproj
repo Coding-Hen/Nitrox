@@ -269,6 +269,7 @@
     <Compile Include="Communication\Packets\Processors\EscapePodRepairProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\PlayerEquipmentAddedProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\PlayerEquipmentRemovedProcessor.cs" />
+    <Compile Include="Communication\Packets\Processors\PrecursorDoorwayChangedProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\RadioPlayPendingMessageProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\SignChangedPacketProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\DeconstructionCompletedPacketProcessor.cs" />
