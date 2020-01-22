@@ -4,9 +4,9 @@ using Harmony;
 using NitroxClient.GameLogic;
 using NitroxModel.Core;
 
-namespace NitroxPatcher.Patches
+namespace NitroxPatcher.Patches.Dynamic
 {
-    class PrecursorDoorKeyColumn_Patch : NitroxPatch
+    public class PrecursorDoorKeyColumn_Patch : NitroxPatch, IDynamicPatch
     {
         public static readonly Type TARGET_CLASS = typeof(PrecursorDoorKeyColumn);
         public static readonly MethodInfo TARGET_METHOD = TARGET_CLASS.GetMethod("SlotKey", BindingFlags.Public | BindingFlags.Instance);
