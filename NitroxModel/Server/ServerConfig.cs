@@ -191,5 +191,7 @@ namespace NitroxModel.Server
         #endregion
 
         public bool IsHardcore => GameModeEnum == ServerGameMode.HARDCORE;
+
+        public bool IsPasswordRequired => ServerPassword != "";
     }
 }
