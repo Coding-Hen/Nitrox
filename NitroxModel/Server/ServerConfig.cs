@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
 using NitroxModel.DataStructures.GameLogic;
 using NitroxModel.Helper;
 
@@ -192,6 +191,6 @@ namespace NitroxModel.Server
 
         public bool IsHardcore => GameModeEnum == ServerGameMode.HARDCORE;
 
-        public bool IsPasswordRequired => ServerPassword != "";
+        public bool IsPasswordRequired => ServerPassword != string.Empty;
     }
 }
