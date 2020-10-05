@@ -119,6 +119,8 @@
     <Compile Include="Packets\IShortString.cs" />
     <Compile Include="Packets\GameModeChanged.cs" />
     <Compile Include="Packets\EnergyMixinValueChanged.cs" />
+    <Compile Include="Packets\MultiplayerPasswordAuthentication.cs" />
+    <Compile Include="Packets\MultiplayerPasswordAuthenticationRequest.cs" />
     <Compile Include="Packets\PlayerPermaDeathEvent.cs" />
     <Compile Include="Packets\PingRenamed.cs" />
     <Compile Include="Packets\PlayerEquipmentAdded.cs" />

@@ -21,7 +21,7 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             try
             {
                 ValidateState(sessionConnectionContext);
-                AwaitReservationCredentials(sessionConnectionContext);
+                AwaitServerPassword(sessionConnectionContext);
             }
             catch (Exception)
             {
@@ -53,9 +53,9 @@ namespace NitroxClient.Communication.MultiplayerSession.ConnectionState
             Validate.PacketCorrelation(sessionConnectionContext.SessionPolicy, policyRequestCorrelationId);
         }
 
-        private void AwaitReservationCredentials(IMultiplayerSessionConnectionContext sessionConnectionContext)
+        private void AwaitServerPassword(IMultiplayerSessionConnectionContext sessionConnectionContext)
         {
-            AwaitingReservationCredentials nextState = new AwaitingReservationCredentials();
+            AwaitingServerPassword nextState = new AwaitingServerPassword();
             sessionConnectionContext.UpdateConnectionState(nextState);
         }
     }

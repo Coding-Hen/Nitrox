@@ -12,6 +12,7 @@ namespace NitroxClient.Communication.Abstract
 
         void Connect(string ipAddress, int port);
         void ProcessSessionPolicy(MultiplayerSessionPolicy policy);
+        void ProcessPasswordAuthentication(MultiplayerPasswordAuthentication multiplayerPasswordAuthentication);
         void RequestSessionReservation(PlayerSettings playerSettings, AuthenticationContext authenticationContext);
         void ProcessReservationResponsePacket(MultiplayerSessionReservation reservation);
         void JoinSession();

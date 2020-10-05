@@ -13,6 +13,7 @@ using NitroxModel.Core;
 using NitroxModel.Helper;
 using NitroxModel.Logger;
 using NitroxModel.MultiplayerSession;
+using NitroxModel.Packets;
 using NitroxModel_Subnautica.DataStructures;
 using UnityEngine;
 using UnityEngine.UI;
@@ -407,7 +408,6 @@ namespace NitroxClient.MonoBehaviours.Gui.MainMenu
             {
                 authenticationContext = new AuthenticationContext(playerName);
             }
-
             multiplayerSession.RequestSessionReservation(playerSettings, authenticationContext);
         }
 
@@ -430,6 +430,15 @@ namespace NitroxClient.MonoBehaviours.Gui.MainMenu
                 case MultiplayerSessionConnectionStage.ESTABLISHING_SERVER_POLICY:
                     Log.InGame("Requesting session policy information...");
                     break;
+                case MultiplayerSessionConnectionStage.AWAITING_SERVER_PASSWORD:
+                    if (multiplayerSession.SessionPolicy.RequiresServerPassword)
+                    {
+                        Log.InGame("Waiting for Server Password Input...");
+                        showingPasswordWindow = true;
+                        shouldFocus = true;
+                        break;
+                    }
+                    goto case MultiplayerSessionConnectionStage.AWAITING_RESERVATION_CREDENTIALS;
                 case MultiplayerSessionConnectionStage.AWAITING_RESERVATION_CREDENTIALS:
                     if (multiplayerSession.SessionPolicy.RequiresServerPassword)
                     {
@@ -677,6 +686,9 @@ namespace NitroxClient.MonoBehaviours.Gui.MainMenu
         private void SubmitPassword()
         {
             passwordEntered = true;
+            string passwordRequestCorrelationId = Guid.NewGuid().ToString();
+            MultiplayerPasswordAuthenticationRequest multiplayerPasswordAuthentication = new MultiplayerPasswordAuthenticationRequest(passwordRequestCorrelationId);
+            multiplayerSession.ProcessPasswordAuthentication(multiplayerPasswordAuthentication);
         }
 
         private void OnCancelButtonClicked()

@@ -49,8 +49,6 @@ namespace NitroxServer.GameLogic
             AuthenticationContext authenticationContext,
             string correlationId)
         {
-            // TODO: ServerPassword in NitroxClient
-
             if (!string.IsNullOrEmpty(serverConfig.ServerPassword) && (!authenticationContext.ServerPassword.HasValue || authenticationContext.ServerPassword.Value != serverConfig.ServerPassword))
             {
                 MultiplayerSessionReservationState rejectedState = MultiplayerSessionReservationState.REJECTED | MultiplayerSessionReservationState.AUTHENTICATION_FAILED;

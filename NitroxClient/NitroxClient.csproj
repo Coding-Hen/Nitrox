@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientAutoFacRegistrar.cs" />
+    <Compile Include="Communication\MultiplayerSession\ConnectionState\AwaitingServerPassword.cs" />
     <Compile Include="Communication\PacketReceiver.cs" />
     <Compile Include="Communication\Packets\Processors\BedEnterProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\EntityMetadataUpdateProcessor.cs" />
@@ -349,7 +350,7 @@
       <Name>LiteNetLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\NitroxModel-Subnautica\NitroxModel-Subnautica.csproj">
-      <Project>{0a377218-6b36-4522-89a3-a39cfc999209}</Project>
+      <Project>{0A377218-6B36-4522-89A3-A39CFC999209}</Project>
       <Name>NitroxModel-Subnautica</Name>
     </ProjectReference>
   </ItemGroup>

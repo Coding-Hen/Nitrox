@@ -69,6 +69,12 @@ namespace NitroxClient.Communication.MultiplayerSession
             CurrentState.NegotiateReservation(this);
         }
 
+        public void ProcessPasswordAuthentication(MultiplayerPasswordAuthentication multiplayerPasswordAuthentication)
+        {
+            Log.InGame("Processing password authentication");
+            CurrentState.NegotiateReservation(this);
+        }
+
         public void RequestSessionReservation(PlayerSettings playerSettings, AuthenticationContext authenticationContext)
         {
             PlayerSettings = playerSettings;
