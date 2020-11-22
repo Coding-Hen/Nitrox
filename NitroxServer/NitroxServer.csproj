@@ -50,16 +50,15 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="DotNetZip, Version=1.13.8.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.13.8\lib\net40\DotNetZip.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\Nitrox.Subnautica.Assets\protobuf-net.dll</HintPath>
@@ -84,6 +83,7 @@
     <Compile Include="Communication\Packets\Processors\Abstract\UnauthenticatedPacketProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\CellVisibilityChangedProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\EntityMetadataUpdateProcessor.cs" />
+    <Compile Include="Communication\Packets\Processors\EscapePodChangedPacketProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\FireDousedProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\EscapePodRadioRepairProcessor.cs" />
     <Compile Include="Communication\Packets\Processors\EscapePodRepairProcessor.cs" />
@@ -167,15 +167,13 @@
     <Compile Include="GameLogic\Entities\Spawning\EntitySpawnPointFactory.cs" />
     <Compile Include="GameLogic\EscapePodData.cs" />
     <Compile Include="GameLogic\Items\InventoryManager.cs" />
+    <Compile Include="GameLogic\Players\PersistedPlayerData.cs" />
     <Compile Include="GameLogic\StoryTimingData.cs" />
     <Compile Include="GameLogic\Unlockables\StoryGoalData.cs" />
     <Compile Include="GameLogic\Vehicles\VehicleManager.cs" />
     <Compile Include="Serialization\JsonConverter\AttributeContractResolver.cs" />
-    <Compile Include="Serialization\JsonConverter\ColorConverter.cs" />
     <Compile Include="Serialization\JsonConverter\NitroxIdConverter.cs" />
-    <Compile Include="Serialization\JsonConverter\QuaternionConverter.cs" />
     <Compile Include="Serialization\JsonConverter\TechTypeConverter.cs" />
-    <Compile Include="Serialization\JsonConverter\Vector3Converter.cs" />
     <Compile Include="Serialization\Resources\Datastructures\AssetIdentifier.cs" />
     <Compile Include="Serialization\Resources\Datastructures\GameObjectAsset.cs" />
     <Compile Include="Serialization\Resources\Datastructures\MonobehaviourAsset.cs" />

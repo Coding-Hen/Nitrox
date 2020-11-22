@@ -26,16 +26,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.9.4.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.9.4\lib\net45\Autofac.dll</HintPath>
     </Reference>
     <Reference Include="LZ4">
       <HintPath>..\Nitrox.Subnautica.Assets\LZ4.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.7.2\lib\net40-client\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.7.5\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="protobuf-net">
       <HintPath>..\Nitrox.Subnautica.Assets\protobuf-net.dll</HintPath>
@@ -45,7 +44,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
@@ -92,7 +94,7 @@
     <Compile Include="DataStructures\GameLogic\NitroxVector3.cs" />
     <Compile Include="DataStructures\GameLogic\NitroxTechType.cs" />
     <Compile Include="DataStructures\NitroxId.cs" />
-    <Compile Include="DataStructures\Int3.cs" />
+    <Compile Include="DataStructures\NitroxInt3.cs" />
     <Compile Include="DataStructures\Surrogates\SerializationSurrogate.cs" />
     <Compile Include="DataStructures\ThreadSafeCollection.cs" />
     <Compile Include="DataStructures\ThreadSafeDictionary.cs" />
@@ -111,6 +113,7 @@
     <Compile Include="Networking\NitroxDeliveryMethod.cs" />
     <Compile Include="Packets\EntityMetadataUpdate.cs" />
     <Compile Include="Packets\BedEnter.cs" />
+    <Compile Include="Packets\EscapePodChanged.cs" />
     <Compile Include="Packets\EscapePodRadioRepair.cs" />
     <Compile Include="Packets\EscapePodRepair.cs" />
     <Compile Include="Packets\IShortString.cs" />
