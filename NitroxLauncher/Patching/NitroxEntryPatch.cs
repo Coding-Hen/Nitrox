@@ -29,7 +29,11 @@ namespace NitroxLauncher.Patching
 
         public NitroxEntryPatch(string subnauticaBasePath)
         {
+#if DEBUG
             subnauticaManagedPath = Path.Combine(subnauticaBasePath, "Subnautica_Data", "Managed");
+#elif BELOWZERO
+            subnauticaManagedPath = Path.Combine(subnauticaBasePath, "SubnauticaZero_Data", "Managed");
+#endif
         }
 
         public void Apply()

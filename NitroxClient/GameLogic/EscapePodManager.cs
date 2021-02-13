@@ -13,6 +13,7 @@ using NitroxModel_Subnautica.DataStructures;
 
 namespace NitroxClient.GameLogic
 {
+#if DEBUG
     public class EscapePodManager
     {
         /*
@@ -210,4 +211,6 @@ namespace NitroxClient.GameLogic
             packetSender.Send(repair);
         }
     }
+    
+#endif
 }

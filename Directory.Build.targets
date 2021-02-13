@@ -10,8 +10,7 @@
     <Choose>
         <When Condition="'$(UnityModLibrary)' == 'true' or '$(TestLibrary)' == 'true'">
             <!-- UnityEngine libraries to include -->
-            <ItemGroup>
-
+            <ItemGroup Condition="Exists('$(SubnauticaDir)')">
                 <Reference Include="Unity.Timeline">
                     <HintPath>$(SubnauticaManaged)\Unity.Timeline.dll</HintPath>
                     <Private>$(TestLibrary)</Private>
@@ -267,6 +266,261 @@
 
                 <Reference Include="Assembly-CSharp-firstpass">
                     <HintPath>$(SubnauticaManaged)\Assembly-CSharp-firstpass.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+            </ItemGroup>
+            
+            <ItemGroup Condition="Exists('$(SubnauticaZeroDir)')">
+            <Reference Include="Unity.Timeline">
+                    <HintPath>$(SubnauticaZeroManaged)\Unity.Timeline.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.AccessibilityModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.AccessibilityModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.AIModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.AIModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.AndroidJNIModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.AndroidJNIModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.AnimationModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.AnimationModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ARModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ARModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.AssetBundleModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.AssetBundleModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.AudioModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.AudioModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ClothModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ClothModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ClusterInputModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ClusterInputModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ClusterRendererModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ClusterRendererModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.CoreModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.CoreModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.CrashReportingModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.CrashReportingModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.DirectorModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.DirectorModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.DSPGraphModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.DSPGraphModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.GameCenterModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.GameCenterModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.GridModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.GridModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.HotReloadModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.HotReloadModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ImageConversionModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ImageConversionModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.IMGUIModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.IMGUIModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.InputLegacyModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.InputLegacyModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.InputModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.InputModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.JSONSerializeModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.JSONSerializeModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.LocalizationModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.LocalizationModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ParticleSystemModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ParticleSystemModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.PerformanceReportingModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.PerformanceReportingModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.Physics2DModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.Physics2DModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.PhysicsModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.PhysicsModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ProfilerModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ProfilerModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.ScreenCaptureModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.ScreenCaptureModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.SharedInternalsModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.SharedInternalsModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.SpriteMaskModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.SpriteMaskModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.SpriteShapeModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.SpriteShapeModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.StreamingModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.StreamingModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.SubstanceModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.SubstanceModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.TerrainModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.TerrainModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.TerrainPhysicsModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.TextCoreModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.TextCoreModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.TextRenderingModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.TextRenderingModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.TilemapModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.TilemapModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.TLSModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.TLSModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UI">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UI.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UIElementsModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UIElementsModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UIModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UIModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UmbraModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UmbraModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UNETModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UNETModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityAnalyticsModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityConnectModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityConnectModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityTestProtocolModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityWebRequestModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityWebRequestModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.VehiclesModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.VehiclesModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.VFXModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.VFXModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.VideoModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.VideoModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.VRModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.VRModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.WindModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.WindModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="UnityEngine.XRModule">
+                    <HintPath>$(SubnauticaZeroManaged)\UnityEngine.XRModule.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="Assembly-CSharp">
+                    <HintPath>$(SubnauticaZeroManaged)\Assembly-CSharp.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="Assembly-CSharp-firstpass">
+                    <HintPath>$(SubnauticaZeroManaged)\Assembly-CSharp-firstpass.dll</HintPath>
                     <Private>$(TestLibrary)</Private>
                 </Reference>
             </ItemGroup>

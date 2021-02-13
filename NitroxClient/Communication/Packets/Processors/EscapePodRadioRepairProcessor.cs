@@ -1,4 +1,5 @@
-﻿using NitroxClient.Communication.Packets.Processors.Abstract;
+﻿#if DEBUG
+using NitroxClient.Communication.Packets.Processors.Abstract;
 using NitroxModel.Packets;
 using NitroxClient.GameLogic;
 
@@ -19,3 +20,4 @@ namespace NitroxClient.Communication.Packets.Processors
         }
     }
 }
+#endif

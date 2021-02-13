@@ -23,7 +23,9 @@ namespace NitroxClient.GameLogic.InitialSync
             this.remotePlayerManager = remotePlayerManager;
 
             DependentProcessors.Add(typeof(BuildingInitialSyncProcessor)); // Remote players can be spawned inside buildings.
-            DependentProcessors.Add(typeof(EscapePodInitialSyncProcessor)); // Remote players can be spawned inside the escape pod.
+#if SUBNAUTICA
+            DependentProcessors.Add(typeof(EscapePodInitialSyncProcessor)); // Remote players can be spawned inside the escape pod. 
+#endif
             DependentProcessors.Add(typeof(VehicleInitialSyncProcessor)); // Remote players can be piloting vehicles.
         }
 
@@ -102,7 +104,7 @@ namespace NitroxClient.GameLogic.InitialSync
                         return false;
                     }
                 }
-
+#if SUBNAUTICA
                 Log.Debug($"Trying to find escape pod for {subId}.");
                 EscapePod escapePod = null;
                 sub.Value.TryGetComponent<EscapePod>(out escapePod);
@@ -111,9 +113,14 @@ namespace NitroxClient.GameLogic.InitialSync
                     Log.Debug("Found escape pod for player. Will add him and update animation.");
                     return false;
                 }
+#endif
             }
             // Player can be above ocean level.
+#if SUBNAUTICA
             float oceanLevel = Ocean.main.GetOceanLevel();
+#elif BELOWZERO
+            float oceanLevel = Ocean.GetOceanLevel();
+#endif
             return playerPosition.y < oceanLevel;
         }
     }

@@ -16,7 +16,11 @@ namespace NitroxLauncher.Patching
 
         public static bool IsSteam(string subnauticaPath)
         {
+#if DEBUG
             if (File.Exists(Path.Combine(subnauticaPath, "Subnautica_Data", "Plugins", "CSteamworks.dll")))
+#elif BELOWZERO
+            if (File.Exists(Path.Combine(subnauticaPath, "SubnauticaZero_Data", "Plugins", "x86_64", "CSteamworks.dll")))
+#endif
             {
                 return true;
             }

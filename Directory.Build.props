@@ -16,6 +16,10 @@
         <DefineConstants>TRACE;RELEASE</DefineConstants>
         <OutputPath>bin\Release\</OutputPath>
     </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'BelowZero' ">
+        <DefineConstants>BELOWZERO</DefineConstants>
+        <OutputPath>bin\BelowZero\</OutputPath>
+    </PropertyGroup>
     
     <PropertyGroup Condition="$([System.Text.RegularExpressions.Regex]::IsMatch($(MSBuildProjectName), '^Nitrox.*$'))">
         <NitroxLibrary>true</NitroxLibrary>

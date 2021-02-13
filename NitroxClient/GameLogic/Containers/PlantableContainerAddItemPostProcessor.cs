@@ -2,7 +2,7 @@
 using NitroxModel.Logger;
 using UnityEngine;
 using NitroxModel.DataStructures.GameLogic;
-
+using NitroxModel.Helper;
 
 namespace NitroxClient.GameLogic.Containers
 {
@@ -38,8 +38,12 @@ namespace NitroxClient.GameLogic.Containers
 
             // time in seconds
             double elapsedGrowthTime = (DayNightCycle.main.timePassedAsDouble - plantableData.PlantedGameTime);
-
-            if (elapsedGrowthTime > grower.growthDuration)
+#if DEBUG
+            float growthDuration = grower.growthDuration;
+#elif BELOWZERO
+            float growthDuration = (float)grower.ReflectionGetProperty("growthDuration");
+#endif            
+            if (elapsedGrowthTime > growthDuration)
             {
                 // should be ready
                 Log.Debug($"FixPlantGrowth: Finishing {item.name} {plantableData.ItemId} that has grown for {elapsedGrowthTime} seconds");
@@ -48,7 +52,7 @@ namespace NitroxClient.GameLogic.Containers
             else
             {
                 Log.Debug($"FixPlantGrowth: Growing {item.name} {plantableData.ItemId} that has grown for {elapsedGrowthTime} seconds");
-                grower.SetProgress(Convert.ToSingle(elapsedGrowthTime / grower.growthDuration));
+                grower.SetProgress(Convert.ToSingle(elapsedGrowthTime / growthDuration));
             }
         }
 
