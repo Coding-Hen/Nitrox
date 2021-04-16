@@ -48,7 +48,7 @@ namespace NitroxModel.Helper
             {
                 if (new FileInfo(steamDll).Length > 209000)
                 {
-                    return false;
+                    return true;
                 }
             }
             return false;
