@@ -1,7 +1,6 @@
 name: Building Nitrox Pull Request
 on: 
   push:
-  pull_request:
     paths-ignore:
     - '**/PirateDetection.cs'
   
