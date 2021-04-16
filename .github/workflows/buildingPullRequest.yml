@@ -1,5 +1,10 @@
 name: Building Nitrox Pull Request
-on: pull_request
+on: 
+  push:
+  pull_request:
+    paths-ignore:
+    - '**/PirateDetection.cs'
+  
 jobs:
   build:
     runs-on: windows-latest
