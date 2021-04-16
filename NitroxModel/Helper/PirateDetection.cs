@@ -46,7 +46,7 @@ namespace NitroxModel.Helper
             // Check for a modified steam dll
             if (File.Exists(steamDll))
             {
-                if (new FileInfo(steamDll).Length > 20900)
+                if (new FileInfo(steamDll).Length > 209000)
                 {
                     return false;
                 }
