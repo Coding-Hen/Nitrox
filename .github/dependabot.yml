@@ -1,0 +1,11 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 99
+  ignore:
+  - dependency-name: Moq
+    versions:
+    - 4.16.0
