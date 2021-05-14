@@ -20,13 +20,21 @@ namespace NitroxPatcher.Patches.Dynamic
         public static bool Prefix(VehicleDockingBay __instance, Collider other)
         {
             Vehicle vehicle = other.GetComponentInParent<Vehicle>();
+#if SUBNAUTICA
             prevInterpolatingVehicle = (Vehicle)__instance.ReflectionGet("interpolatingVehicle");
+#elif BELOWZERO
+            prevInterpolatingVehicle = ((Dockable)__instance.ReflectionGet("interpolatingDockable")).vehicle;
+#endif
             return NitroxServiceLocator.LocateService<SimulationOwnership>().HasAnyLockType(NitroxEntity.GetId(vehicle.gameObject));
         }
 
         public static void Postfix(VehicleDockingBay __instance, Collider other)
         {
+#if SUBNAUTICA
             Vehicle interpolatingVehicle = (Vehicle)__instance.ReflectionGet("interpolatingVehicle");
+#elif BELOWZERO
+            Vehicle interpolatingVehicle = ((Dockable)__instance.ReflectionGet("interpolatingDockable")).vehicle;
+#endif
             NitroxId id = NitroxEntity.GetId(interpolatingVehicle.gameObject);
             // Only send data, when interpolatingVehicle changes to avoid multiple packages send
             if (interpolatingVehicle &&

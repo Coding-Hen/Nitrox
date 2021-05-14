@@ -17,14 +17,18 @@
     <OutputPath>bin\Subnautica\</OutputPath>
     <DefineConstants>SUBNAUTICA</DefineConstants>
     <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
     <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'BelowZero|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\BelowZero\</OutputPath>
     <DefineConstants>BELOWZERO</DefineConstants>
     <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
     <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,20 +44,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Steam\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\Assembly-CSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Program Files\Steam\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
-    </Reference>
-    <Reference Include="iTween">
+    <Reference Include="iTween" Condition="'$(Configuration)|$(Platform)' == 'Subnautica|AnyCPU'">
       <HintPath>$(SubnauticaManaged)\iTween.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="LitJson">
-      <HintPath>$(SubnauticaManaged)\LitJson.dll</HintPath>
+      <HintPath Condition="'$(Configuration)|$(Platform)' == 'Subnautica|AnyCPU'">$(SubnauticaManaged)\LitJson.dll</HintPath>
+      <HintPath Condition="'$(Configuration)|$(Platform)' == 'BelowZero|AnyCPU'">$(SubnauticaZeroManaged)\LitJson.dll</HintPath>
       <Private>false</Private>
     </Reference>
     <Reference Include="System" />
@@ -62,9 +59,6 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Unity.ResourceManager">
-      <HintPath>..\..\..\Program Files\Steam\steamapps\common\SubnauticaZero\SubnauticaZero_Data\Managed\Unity.ResourceManager.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClientAutoFacRegistrar.cs" />

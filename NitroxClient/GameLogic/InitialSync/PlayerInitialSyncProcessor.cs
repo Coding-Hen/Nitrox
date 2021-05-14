@@ -47,15 +47,23 @@ namespace NitroxClient.GameLogic.InitialSync
             Log.Info($"Received initial sync player GameObject Id: {id}");
         }
 
-        private void AddStartingItemsToPlayer(bool firstTimeConnecting)
+        private IEnumerable AddStartingItemsToPlayer(bool firstTimeConnecting)
         {
             if (firstTimeConnecting)
             {
                 foreach (TechType techType in LootSpawner.main.GetEscapePodStorageTechTypes())
                 {
+#if SUBNAUTICA
                     GameObject gameObject = CraftData.InstantiateFromPrefab(techType, false);
                     Pickupable pickupable = gameObject.GetComponent<Pickupable>();
                     pickupable = pickupable.Initialize();
+#elif BELOWZERO
+
+                    TaskResult<GameObject> prefabResult = new TaskResult<GameObject>();
+                    yield return CraftData.InstantiateFromPrefabAsync(techType, prefabResult, false);
+                    Pickupable pickupable = prefabResult.Get().GetComponent<Pickupable>();
+                    pickupable.Initialize();
+#endif
                     itemContainers.AddItem(pickupable.gameObject, NitroxEntity.GetId(Player.main.transform.gameObject));
                     itemContainers.BroadcastItemAdd(pickupable, Inventory.main.container.tr);
                 }
@@ -70,6 +78,7 @@ namespace NitroxClient.GameLogic.InitialSync
                 Player.main.liveMixin.health = statsData.Health;
                 Player.main.GetComponent<Survival>().food = statsData.Food;
                 Player.main.GetComponent<Survival>().water = statsData.Water;
+#if SUBNAUTICA
                 Player.main.infectedMixin.SetInfectedAmount(statsData.InfectionAmount);
 				
                 //If InfectionAmount is at least 1f then the infection reveal should have happened already.
@@ -78,6 +87,7 @@ namespace NitroxClient.GameLogic.InitialSync
                 {
                     Player.main.infectionRevealed = true;
                 }
+#endif
             }
         }
         

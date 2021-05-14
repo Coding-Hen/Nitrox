@@ -58,7 +58,12 @@ namespace NitroxClient.GameLogic.Spawning
             IPrefabRequest prefabRequest = PrefabDatabase.GetPrefabAsync(classId);
             if (!prefabRequest.TryGetPrefab(out prefab))
             {
+#if SUBNAUTICA
                 prefab = CraftData.GetPrefabForTechType(techType, false);
+#elif BELOWZERO
+                CoroutineTask<GameObject> prefabCoroutine = CraftData.GetPrefabForTechTypeAsync(techType, false);
+                prefab = prefabCoroutine.GetResult();
+#endif
 
                 if (prefab == null)
                 {

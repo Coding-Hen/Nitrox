@@ -23,7 +23,9 @@ namespace NitroxServer.ConsoleCommands
             info.AppendLine($"Oxygen: {player.Stats.Oxygen}/{player.Stats.MaxOxygen}");
             info.AppendLine($"Food: {player.Stats.Food}");
             info.AppendLine($"Water: {player.Stats.Water}");
+#if SUBNAUTICA
             info.AppendLine($"Infection: {player.Stats.InfectionAmount}");
+#endif
 
             SendMessage(args.Sender, info.ToString());
         }

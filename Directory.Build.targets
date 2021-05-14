@@ -271,7 +271,15 @@
             </ItemGroup>
             
             <ItemGroup Condition="Exists('$(SubnauticaZeroDir)')">
-            <Reference Include="Unity.Timeline">
+                <Reference Include="Unity.ResourceManager">
+                    <HintPath>$(SubnauticaZeroManaged)\Unity.ResourceManager.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="Unity.TextMeshPro">
+                    <HintPath>$(SubnauticaZeroManaged)\Unity.TextMeshPro.dll</HintPath>
+                    <Private>$(TestLibrary)</Private>
+                </Reference>
+                <Reference Include="Unity.Timeline">
                     <HintPath>$(SubnauticaZeroManaged)\Unity.Timeline.dll</HintPath>
                     <Private>$(TestLibrary)</Private>
                 </Reference>

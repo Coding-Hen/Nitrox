@@ -308,8 +308,9 @@ namespace NitroxTest.Serialization
                     Assert.AreEqual(playerData.CurrentStats.Health, playerDataAfter.CurrentStats.Health, "PlayerData.Players.CurrentStats.Health is not equal");
                     Assert.AreEqual(playerData.CurrentStats.Food, playerDataAfter.CurrentStats.Food, "PlayerData.Players.CurrentStats.Food is not equal");
                     Assert.AreEqual(playerData.CurrentStats.Water, playerDataAfter.CurrentStats.Water, "PlayerData.Players.CurrentStats.Water is not equal");
+#if SUBNAUTICA
                     Assert.AreEqual(playerData.CurrentStats.InfectionAmount, playerDataAfter.CurrentStats.InfectionAmount, "PlayerData.Players.CurrentStats.InfectionAmount is not equal");
-
+#endif
                     Assert.AreEqual(playerData.SubRootId, playerDataAfter.SubRootId, "PlayerData.Players.SubRootId is not equal");
                     Assert.AreEqual(playerData.Permissions, playerDataAfter.Permissions, "PlayerData.Players.Permissions is not equal");
                     Assert.AreEqual(playerData.NitroxId, playerDataAfter.NitroxId, "PlayerData.Players.NitroxId is not equal");
@@ -396,7 +397,11 @@ namespace NitroxTest.Serialization
                             Permissions = Perms.ADMIN,
                             SpawnPosition = NitroxVector3.Zero,
                             SubRootId = null,
+#if SUBNAUTICA
                             CurrentStats = new PlayerStatsData(45, 45, 40, 39, 28, 1),
+#elif BELOWZERO
+                            CurrentStats = new PlayerStatsData(45, 45, 40, 39, 28),
+#endif
                             EquippedItems = new List<EquippedItemData>(0),
                             Modules = new List<EquippedItemData>(0)
                         },
@@ -409,7 +414,11 @@ namespace NitroxTest.Serialization
                             Permissions = Perms.PLAYER,
                             SpawnPosition = NitroxVector3.One,
                             SubRootId = new NitroxId(),
+#if SUBNAUTICA
                             CurrentStats = new PlayerStatsData(40, 40, 30, 29, 28, 0),
+#elif BELOWZERO
+                            CurrentStats = new PlayerStatsData(40, 40, 30, 29, 28),
+#endif
                             EquippedItems = new List<EquippedItemData>
                             {
                                 new EquippedItemData(new NitroxId(), new NitroxId(), new byte[]{0x30, 0x40}, "Slot3", new NitroxTechType("Flashlight")),
@@ -442,7 +451,7 @@ namespace NitroxTest.Serialization
                             }
                         }
                     },
-                    GameData = new GameData()
+                    GameData = new NitroxServer.GameLogic.Bases.GameData()
                     {
                         PDAState = new PDAStateData()
                         {

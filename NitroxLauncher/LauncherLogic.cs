@@ -182,7 +182,11 @@ namespace NitroxLauncher
             }
 
             return Directory.EnumerateFileSystemEntries(directory, "*.exe")
+#if SUBNAUTICA
                 .Any(file => Path.GetFileName(file)?.Equals("subnautica.exe", StringComparison.OrdinalIgnoreCase) ?? false);
+#elif BELOWZERO
+                .Any(file => Path.GetFileName(file)?.Equals("SubnauticaZero.exe", StringComparison.OrdinalIgnoreCase) ?? false);
+#endif
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -295,7 +299,11 @@ namespace NitroxLauncher
 
         private Process StartSubnautica()
         {
+#if SUBNAUTICA
             string subnauticaExe = Path.Combine(subnauticaPath, "Subnautica.exe");
+#elif BELOWZERO
+            string subnauticaExe = Path.Combine(subnauticaPath, "SubnauticaZero.exe");
+#endif
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
                 WorkingDirectory = subnauticaPath,
@@ -308,7 +316,11 @@ namespace NitroxLauncher
             }
             else if (PlatformDetection.IsSteam(subnauticaPath))
             {
+#if SUBNAUTICA
                 startInfo.FileName = "steam://run/264710";
+#elif BELOWZERO
+                startInfo.FileName = "steam://run/848450";
+#endif
             }
             else if (PlatformDetection.IsMicrosoftStore(subnauticaPath))
             {
