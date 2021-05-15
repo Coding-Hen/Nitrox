@@ -18,7 +18,11 @@ namespace NitroxPatcher.Patches.Dynamic
 
         public static void Postfix(EnergyMixin __instance, float amount)
         {
+#if SUBNAUTICA
             GameObject battery = __instance.GetBattery();
+#elif BELOWZERO
+            GameObject battery = __instance.GetBatteryGameObject();
+#endif
             if (battery)
             {
                 if (Math.Abs(Math.Floor(__instance.charge + amount) - Math.Floor(__instance.charge)) > 0.005f) //Send package if power changed to next natural number
