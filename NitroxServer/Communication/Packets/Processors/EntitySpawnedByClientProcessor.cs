@@ -24,7 +24,7 @@ namespace NitroxServer.Communication.Packets.Processors
         {
             Entity entity = packet.Entity;
             entityManager.RegisterNewEntity(entity);
-
+            Log.Debug($"Entity has been spawned {entity.TechType} {entity.Id}");
             SimulatedEntity simulatedEntity = entitySimulation.AssignNewEntityToPlayer(entity, playerWhoSpawned);
 
             SimulationOwnershipChange ownershipChangePacket = new SimulationOwnershipChange(simulatedEntity);
