@@ -112,6 +112,7 @@ public sealed class PlayerInitialSyncProcessor : InitialSyncProcessor
             Survival survivalComponent = Player.main.GetComponent<Survival>();
             survivalComponent.food = statsData.Food;
             survivalComponent.water = statsData.Water;
+#if SUBNAUTICA
             Player.main.infectedMixin.SetInfectedAmount(statsData.InfectionAmount);
 
             //If InfectionAmount is at least 1f then the infection reveal should have happened already.
@@ -120,7 +121,7 @@ public sealed class PlayerInitialSyncProcessor : InitialSyncProcessor
             {
                 Player.main.infectionRevealed = true;
             }
-
+#endif
             // We need to make the player invincible before he finishes loading because in some cases he will eventually die before loading
             Player.main.liveMixin.invincible = true;
             Player.main.FreezeStats();
@@ -134,7 +135,11 @@ public sealed class PlayerInitialSyncProcessor : InitialSyncProcessor
     private static void SetPlayerGameMode(NitroxGameMode gameMode)
     {
         Log.Info($"Received initial sync packet with gamemode {gameMode}");
+#if SUBNAUTICA
         GameModeUtils.SetGameMode((GameModeOption)(int)gameMode, GameModeOption.None);
+#elif BELOWZERO
+        GameModeManager.SetGameOptions((GameModePresetId)(int)gameMode);
+#endif
     }
 
     private void SetPlayerKeepInventoryOnDeath(bool keepInventoryOnDeath)

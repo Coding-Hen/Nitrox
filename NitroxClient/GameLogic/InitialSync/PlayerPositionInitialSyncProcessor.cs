@@ -1,6 +1,8 @@
 using System.Collections;
+#if SUBNAUTICA
 using NitroxClient.Communication;
 using NitroxClient.Communication.Abstract;
+#endif
 using NitroxClient.GameLogic.InitialSync.Abstract;
 using NitroxClient.MonoBehaviours;
 using NitroxModel.DataStructures;
@@ -27,7 +29,9 @@ public sealed class PlayerPositionInitialSyncProcessor : InitialSyncProcessor
         // We freeze the player so that he doesn't fall before the cells around him have loaded
         Player.main.cinematicModeActive = true;
 
+#if SUBNAUTICA
         AttachPlayerToEscapePod(packet.AssignedEscapePodId);
+#endif
 
         Vector3 position = packet.PlayerSpawnData.ToUnity();
         Quaternion rotation = packet.PlayerSpawnRotation.ToUnity();
@@ -37,11 +41,13 @@ public sealed class PlayerPositionInitialSyncProcessor : InitialSyncProcessor
         }
         Player.main.SetPosition(position, rotation);
 
+#if SUBNAUTICA
         // Player.Update is setting SubRootID to null after Player position is set
         using (PacketSuppressor<EscapePodChanged>.Suppress())
         {
             Player.main.ValidateEscapePod();
         }
+#endif
 
         // Player position is relative to a subroot if in a subroot
         Optional<NitroxId> subRootId = packet.PlayerSubRootId;
@@ -66,7 +72,11 @@ public sealed class PlayerPositionInitialSyncProcessor : InitialSyncProcessor
             yield break;
         }
 
+#if SUBNAUTICA
         Player.main.SetCurrentSub(subRoot, true);
+#elif BELOWZERO
+        Player.main.SetCurrentSub(subRoot);
+#endif
         if (subRoot.TryGetComponent(out Base @base))
         {
             SetupPlayerIfInWaterPark(@base);
@@ -77,6 +87,7 @@ public sealed class PlayerPositionInitialSyncProcessor : InitialSyncProcessor
         Player.main.cinematicModeActive = false;
     }
 
+#if SUBNAUTICA
     private static void AttachPlayerToEscapePod(NitroxId escapePodId)
     {
         GameObject escapePod = NitroxEntity.RequireObjectFrom(escapePodId);
@@ -89,6 +100,7 @@ public sealed class PlayerPositionInitialSyncProcessor : InitialSyncProcessor
 
         Player.main.currentEscapePod = escapePod.GetComponent<EscapePod>();
     }
+#endif
 
     private static void SetupPlayerIfInWaterPark(Base @base)
     {
