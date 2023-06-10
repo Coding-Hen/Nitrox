@@ -43,6 +43,7 @@ namespace NitroxServer.Communication.Packets.Processors
         public override void Process(PlayerJoiningMultiplayerSession packet, INitroxConnection connection)
         {
             Player player = playerManager.PlayerConnected(connection, packet.ReservationKey, out bool wasBrandNewPlayer);
+#if SUBNAUTUICA
             NitroxId assignedEscapePodId = world.EscapePodManager.AssignPlayerToEscapePod(player.Id, out Optional<EscapePodWorldEntity> newlyCreatedEscapePod);
 
             if (newlyCreatedEscapePod.HasValue)
@@ -50,6 +51,7 @@ namespace NitroxServer.Communication.Packets.Processors
                 SpawnEntities spawnNewEscapePod = new(newlyCreatedEscapePod.Value);
                 playerManager.SendPacketToOtherPlayers(spawnNewEscapePod, player);
             }
+#endif
 
             // Make players on localhost admin by default.
             if (connection.Endpoint.Address.IsLocalhost())
@@ -67,7 +69,9 @@ namespace NitroxServer.Communication.Packets.Processors
 
             InitialPlayerSync initialPlayerSync = new(player.GameObjectId,
                 wasBrandNewPlayer,
+#if SUBNAUTICA
                 assignedEscapePodId,
+#endif
                 player.EquippedItems,
                 player.UsedItems,
                 player.QuickSlotsBindingIds,

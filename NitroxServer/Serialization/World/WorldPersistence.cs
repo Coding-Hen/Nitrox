@@ -127,7 +127,7 @@ public class WorldPersistence
 #if DEBUG
             seed = "TCCBIBZXAB";
 #else
-                seed = StringHelper.GenerateRandomString(10);
+            seed = StringHelper.GenerateRandomString(10);
 #endif
         }
         // Initialized only once, just like UnityEngine.Random
@@ -143,7 +143,9 @@ public class WorldPersistence
         {
             SimulationOwnershipData = new SimulationOwnershipData(),
             PlayerManager = new PlayerManager(pWorldData.PlayerData.GetPlayers(), config),
+#if SUBNAUTICA
             EscapePodManager = new EscapePodManager(entityRegistry, randomStart, seed),
+#endif
             EntityRegistry = entityRegistry,
             GameData = pWorldData.WorldData.GameData,
             GameMode = gameMode,
