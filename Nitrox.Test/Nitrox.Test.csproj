@@ -32,6 +32,10 @@
         <ProjectReference Include="..\NitroxServer\NitroxServer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Patcher\Patches\Dynamic\" />
+    </ItemGroup>
+
     <Target Name="MoveNitroxAssetsToTestOutput" AfterTargets="Build" Condition="'$(OS)' == 'Windows_NT'">
         <ItemGroup>
             <NitroxSubnauticaAssets Include="..\Nitrox.Assets.Subnautica\**\*." />
