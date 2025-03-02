@@ -16,7 +16,11 @@ public sealed partial class MainGameController_ShouldPlayIntro_Patch : NitroxPat
     public static void Postfix(ref bool __result)
     {
         __result = false;
+#if SUBNAUTICA
         uGUI_SceneIntro_IntroSequence_Patch.SkipLocalCinematic(uGUI.main.intro);
+#elif BELOWZERO
+        uGUI_ExpansionIntro_IntroSequence_Patch.SkipLocalCinematic(uGUI.main.intro);
+#endif
     }
 }
 #endif

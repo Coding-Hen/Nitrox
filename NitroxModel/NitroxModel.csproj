@@ -5,6 +5,10 @@
         <Nullable>disable</Nullable>
         <Configurations>Debug;Release;BelowZero;Subnautica</Configurations>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)'=='BelowZero'">
+        <DefineConstants>DEBUG;BELOWZERO</DefineConstants>
+    </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Autofac" Version="4.9.4" />

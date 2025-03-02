@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Target Name="FindGameAndIncludeReferences" BeforeTargets="ResolveAssemblyReferences" Condition="'$(_NitroxDiscovery_TaskAssembly)' != '' and ('$(UnityModLibrary)' == 'true' or '$(TestLibrary)' == 'true')">
-        <DiscoverGame GameName="Subnautica" IntermediateOutputPath="$(IntermediateOutputPath)">
+        <DiscoverGame GameName="Subnautica: Below Zero" IntermediateOutputPath="$(IntermediateOutputPath)">
             <Output TaskParameter="GamePath" PropertyName="GameDir" />
         </DiscoverGame>
         <Error Condition="'$(GameDir)' == ''" Text="Failed to find the game 'Subnautica' on your machine" />
         <PropertyGroup>
             <GameDir>$(GameDir)\</GameDir>
-            <GameManagedDir>$(GameDir)Subnautica_Data\Managed\</GameManagedDir>
-            <GameVersionFile>$(GameDir)Subnautica_Data\StreamingAssets\SNUnmanagedData\plastic_status.ignore</GameVersionFile>
-            <GameLegacyVersion>68598</GameLegacyVersion>
+            <GameManagedDir>$(GameDir)SubnauticaZero_Data\Managed\</GameManagedDir>
+            <GameVersionFile>$(GameDir)SubnauticaZero_Data\StreamingAssets\SNUnmanagedData\plastic_status.ignore</GameVersionFile>
+            <GameLegacyVersion>0</GameLegacyVersion>
         </PropertyGroup>
         <ReadLinesFromFile File="$(GameVersionFile)">
             <Output TaskParameter="Lines" ItemName="GameVersion" />

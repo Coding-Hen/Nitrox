@@ -36,6 +36,13 @@
       <Folder Include="Patcher\Patches\Dynamic\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Update="Nitrox.Discovery.MSBuild" Version="0.1.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
     <Target Name="MoveNitroxAssetsToTestOutput" AfterTargets="Build" Condition="'$(OS)' == 'Windows_NT'">
         <ItemGroup>
             <NitroxSubnauticaAssets Include="..\Nitrox.Assets.Subnautica\**\*." />

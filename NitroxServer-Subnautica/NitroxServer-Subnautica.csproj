@@ -8,6 +8,10 @@
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Configurations>Debug;Release;BelowZero;Subnautica</Configurations>
     </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)'=='BelowZero'">
+        <DefineConstants>DEBUG;BELOWZERO</DefineConstants>
+    </PropertyGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\NitroxModel-Subnautica\NitroxModel-Subnautica.csproj" />
@@ -24,6 +28,13 @@
         <Reference Include="protobuf-net, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
             <HintPath>..\Nitrox.Assets.Subnautica\protobuf-net.dll</HintPath>
         </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Update="Nitrox.Discovery.MSBuild" Version="0.1.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>build; native; contentfiles; analyzers</IncludeAssets>
+      </PackageReference>
     </ItemGroup>
 
   <Target Name="MoveNitroxAssetsToServerOutput" AfterTargets="Build" Condition="'$(OS)' == 'Windows_NT'">
