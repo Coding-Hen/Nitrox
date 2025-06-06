@@ -26,8 +26,9 @@ public sealed class PlayerInitialSyncProcessor : InitialSyncProcessor
         this.item = item;
         this.itemContainers = itemContainers;
         this.localPlayer = localPlayer;
-
+#if SUBNAUTICA
         AddStep(sync => SetupEscapePod(sync.FirstTimeConnecting));
+#endif
         AddStep(sync => SetPlayerPermissions(sync.Permissions));
         AddStep(sync => SetPlayerIntroCinematicMode(sync.IntroCinematicMode));
         AddStep(sync => SetPlayerGameObjectId(sync.PlayerGameObjectId));
@@ -60,6 +61,7 @@ public sealed class PlayerInitialSyncProcessor : InitialSyncProcessor
         Log.Info($"Received initial sync player GameObject Id: {id}");
     }
 
+#if SUBNAUTICA
     private void SetupEscapePod(bool firstTimeConnecting)
     {
         EscapePod escapePod = EscapePod.main;
@@ -78,6 +80,7 @@ public sealed class PlayerInitialSyncProcessor : InitialSyncProcessor
             }
         }
     }
+#endif
 
     private IEnumerator AddStartingItemsToPlayer(bool firstTimeConnecting)
     {

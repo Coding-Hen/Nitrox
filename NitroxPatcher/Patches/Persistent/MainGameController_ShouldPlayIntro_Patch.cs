@@ -19,7 +19,8 @@ public sealed partial class MainGameController_ShouldPlayIntro_Patch : NitroxPat
 #if SUBNAUTICA
         uGUI_SceneIntro_IntroSequence_Patch.SkipLocalCinematic(uGUI.main.intro);
 #elif BELOWZERO
-        uGUI_ExpansionIntro_IntroSequence_Patch.SkipLocalCinematic(uGUI.main.intro);
+        //TODO: Patch this for BZ
+        //uGUI_ExpansionIntro_IntroSequence_Patch.SkipLocalCinematic(uGUI.main.intro);
 #endif
     }
 }
